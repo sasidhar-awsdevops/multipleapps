@@ -9,13 +9,16 @@ pipeline {
         }
         stage('folder-name') {
             steps {
-                sh "pwd"
                 echo "Print the present working dir"
+                sh "pwd"
             }
         }
         stage('ImageBuild') {
             steps {
                 echo "This step helps in building the image"
+                sh "docker build -t angular-test ."
+                sh "docker save angular-test > angular-test.tar"
+                sh "ls -al"
             }
         }
     }
